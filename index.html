@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SMPN 20 BOGOR</title>
+  <title id="pageTitle">SMPN 20 BOGOR</title>
   <meta name="google-site-verification" content="RxkYC2MuktQL3sqM7dbILhSYYwpJdOCqtP_rjW66AZc" />
   
-  <meta name="description" content="Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor. Dapatkan info terbaru seputar kegiatan sekolah, pengumuman, dan arsip digital kami.">
+  <!-- SEO & Meta Description -->
+  <meta name="description" id="pageDescription" content="Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor. Dapatkan info terbaru seputar kegiatan sekolah, pengumuman, dan arsip digital kami.">
   <meta property="og:site_name" content="SMPN 20 BOGOR">
-  <meta property="og:title" content="SMPN 20 BOGOR">
-  <meta property="og:description" content="Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor. Dapatkan info terbaru seputar kegiatan sekolah, pengumuman, dan arsip digital kami.">
+  <meta property="og:title" id="ogTitle" content="SMPN 20 BOGOR">
+  <meta property="og:description" id="ogDescription" content="Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor. Dapatkan info terbaru seputar kegiatan sekolah, pengumuman, dan arsip digital kami.">
   <meta property="og:image" content="https://i.ibb.co.com/jPbn9s6x/13694.jpg">
   <link rel="icon" type="image/jpeg" href="https://i.ibb.co.com/jPbn9s6x/13694.jpg">
 
+  <!-- Schema Markup (Google Structured Data) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -101,7 +103,7 @@
       background: #0F172A; z-index: 99999;
       display: flex; align-items: center; justify-content: center;
       flex-direction: column; text-align: center;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.5s ease;
     }
     .intro-subtitle {
       font-size: 0.85rem; font-weight: 700; letter-spacing: 8px;
@@ -109,8 +111,8 @@
       animation: pulseText 2s infinite ease-in-out;
     }
     .intro-progress-bar { width: 140px; height: 3px; background: #334155; border-radius: 4px; overflow: hidden; margin-top: 130px; }
-    .intro-progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #38BDF8, #F43F5E); border-radius: 4px; animation: fillProgress 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-    .flying-wrapper { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 12px; z-index: 100000; transform-origin: top left; pointer-events: none; transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1); }
+    .intro-progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #38BDF8, #F43F5E); border-radius: 4px; animation: fillProgress 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+    .flying-wrapper { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 12px; z-index: 100000; transform-origin: top left; pointer-events: none; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
     .flying-logo { width: 75px; height: 75px; object-fit: contain; border-radius: 50%; box-shadow: 0 0 25px rgba(56, 189, 248, 0.4); animation: logoGlowPulse 2.5s infinite ease-in-out; }
     .flying-text { font-size: 1.4rem; font-weight: 800; color: #FFFFFF; line-height: 1.15; text-align: left; white-space: nowrap; letter-spacing: 0.5px; }
 
@@ -335,19 +337,27 @@
         const target = document.getElementById("headerBrandArea");
         if (target) target.classList.add("visible");
         if (flyer) flyer.style.display = "none";
-        if (loader) { loader.style.opacity = "0"; setTimeout(() => { loader.style.display = "none"; }, 500); }
+        if (loader) { 
+          loader.style.opacity = "0"; 
+          setTimeout(() => { loader.style.display = "none"; }, 500); 
+        }
       } catch(e) {
         const loader = document.getElementById("introLoader");
         if (loader) loader.style.display = "none";
+        const flyer = document.getElementById("flyingWrapper");
+        if (flyer) flyer.style.display = "none";
+        const target = document.getElementById("headerBrandArea");
+        if (target) target.classList.add("visible");
       }
     }
-    setTimeout(finishIntroFully, 3000);
+    
+    setTimeout(finishIntroFully, 2200);
     window.addEventListener("load", finishIntroFully);
 
     function setTheme(theme) {
       document.body.setAttribute('data-theme', theme); localStorage.setItem('smpn20_theme', theme);
       const isDark = theme === 'dark'; const btnText = isDark ? 'Terang' : 'Gelap';
-      const sunSvg = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+      const sunSvg = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
       const moonSvg = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
       ['themeIconHeader', 'themeIconMobile'].forEach(id => { const el = document.getElementById(id); if(el) { el.innerHTML = isDark ? sunSvg : moonSvg; el.classList.add('spin'); setTimeout(() => el.classList.remove('spin'), 400); }});
       if(document.getElementById('themeBtnText')) document.getElementById('themeBtnText').innerText = btnText;
@@ -378,7 +388,7 @@
       let formatted = str.replace(/\*(.*?)\*/g, '<b>$1</b>').replace(/_(.*?)_/g, '<i>$1</i>').replace(/~(.*?)~/g, '<del>$1</del>');
       const temp = document.createElement('div'); temp.innerHTML = formatted; return temp.innerHTML.replace(/\n/g, '<br>');
     }
-    function sanitizeAttr(str) { return String(str || '').replace(/&/g, '&').replace(/"/g, '"').replace(/'/g, ''').replace(/</g, '<').replace(/>/g, '>'); }
+    function sanitizeAttr(str) { return String(str || '').replace(/&/g, '&').replace(/"/g, '"').replace(/'/g, "'").replace(/</g, '<').replace(/>/g, '>'); }
     function formatDate(dateStr) { return new Date(dateStr).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }); }
     function isVideoUrl(url) { if(!url) return false; const lower = url.toLowerCase(); return lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.mov') || lower.includes('/uploader/cdn'); }
     function getSmartThumbnail(url) {
@@ -399,12 +409,17 @@
       if (info.type === 'social_link') return `<a href="${sanitizeAttr(info.url)}" target="_blank" class="media-thumb-container" style="${customStyle} background:linear-gradient(135deg, #1E293B, #0F172A); display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none;"><span style="font-size:1.5rem; margin-bottom:4px;">🔗</span><span style="font-weight:700; font-size:0.85rem; color:#FFF;">Buka di ${info.platform} ↗</span></a>`;
       return `<img src="${sanitizeAttr(info.thumb)}" style="${customStyle}">`;
     }
+    
+    // Parser Maps Pintar (Mendukung link goo.gl tanpa kotak kuning error)
     function parseMapsUrl(rawUrl) {
       if (!rawUrl) return null; let str = rawUrl.trim();
-      if (str.includes('<iframe')) { const match = str.match(/src=["']([^"']+)["']/); if (match && match[1]) str = match[1]; }
-      if (str.includes('google.com/maps/embed')) return str;
+      if (str.includes('<iframe')) { const match = str.match(/src=["']([^"']+)["']/); if (match && match[1]) return match[1]; }
+      if (str.includes('goo.gl') || str.includes('google.com/maps')) {
+        return `https://www.google.com/maps?q=${encodeURIComponent(str)}&output=embed`;
+      }
       return `https://maps.google.com/maps?q=${encodeURIComponent(str)}&output=embed`;
     }
+
     function parseKontakUrl(platform, rawVal) {
       if(!rawVal) return ''; let val = rawVal.trim();
       if (val.includes('whatsapp://')) { const match = val.match(/phone=([0-9+]+)/); val = match ? match[1] : val.replace(/[^0-9]/g, ''); }
@@ -486,6 +501,10 @@
 
     function viewBeranda() {
       document.title = "Beranda - SMPN 20 BOGOR";
+      document.getElementById('pageDescription').content = "Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor.";
+      document.getElementById('ogTitle').content = "Beranda - SMPN 20 BOGOR";
+      document.getElementById('ogDescription').content = "Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor.";
+
       if(!state.articles.length) return `<h2>Sorotan Utama</h2><div class="card"><p>Belum ada berita yang diunggah.</p></div>`;
       const headline = state.articles[0]; const recents = state.articles.slice(1, 4);
       let firstImg = headline.foto_url ? headline.foto_url.split(',')[0].trim() : '';
@@ -564,6 +583,13 @@
     function viewArtikel(id) {
       document.body.classList.add("no-scroll");
       const art = state.articles.find(a => String(a.id) === String(id)); if(!art) return `<h2 style="text-align:center;">Berita tidak ditemukan</h2>`;
+      
+      document.title = `${art.judul} - SMPN 20 BOGOR`;
+      const shortDesc = (art.isi || '').substring(0, 120) + '...';
+      const descEl = document.getElementById('pageDescription'); if(descEl) descEl.content = shortDesc;
+      const ogTitleEl = document.getElementById('ogTitle'); if(ogTitleEl) ogTitleEl.content = art.judul;
+      const ogDescEl = document.getElementById('ogDescription'); if(ogDescEl) ogDescEl.content = shortDesc;
+
       let urls = art.foto_url ? art.foto_url.split(',').map(u => u.trim()).filter(u => u) : [];
       let align = 'left'; let rawText = art.isi || '';
       if(rawText.startsWith('[align:')) { const match = rawText.match(/^\[align:(left|center|right|justify)\]\n?/); if(match) { align = match[1]; rawText = rawText.replace(/^\[align:(left|center|right|justify)\]\n?/, ''); } }
@@ -621,7 +647,9 @@
       let html = `<h2>Informasi Sekolah</h2>`;
       if(state.profil) {
         let mapEmbedUrl = parseMapsUrl(state.profil.map_url);
-        html += `<div class="card" style="margin-bottom:15px;"><h3 style="margin-bottom:8px;">Profil & Sambutan</h3><div style="text-align:left; margin-bottom:15px;">${sanitizeHTML(state.profil.isi)}</div>${mapEmbedUrl ? `<h4 style="margin-bottom:8px; font-size:0.95rem;">Lokasi</h4><iframe src="${sanitizeAttr(mapEmbedUrl)}" width="100%" height="280" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>` : `<p class="text-sm">Peta belum diatur.</p>`}</div>`;
+        let align = 'left'; let rawText = state.profil.isi || '';
+        if(rawText.startsWith('[align:')) { const match = rawText.match(/^\[align:(left|center|right|justify)\]\n?/); if(match) { align = match[1]; rawText = rawText.replace(/^\[align:(left|center|right|justify)\]\n?/, ''); } }
+        html += `<div class="card" style="margin-bottom:15px;"><h3 style="margin-bottom:8px;">Profil & Sambutan</h3><div style="text-align:${align}; margin-bottom:15px; line-height:1.75;">${sanitizeHTML(rawText)}</div>${mapEmbedUrl ? `<h4 style="margin-bottom:8px; font-size:0.95rem;">Lokasi</h4><iframe src="${sanitizeAttr(mapEmbedUrl)}" width="100%" height="280" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>` : `<p class="text-sm">Peta belum diatur.</p>`}</div>`;
       }
       html += `<h3 style="margin-top:20px; margin-bottom:10px;">Sosial Media</h3><div class="social-icons-grid">`;
       ['WhatsApp', 'Instagram', 'TikTok', 'YouTube', 'Email'].forEach(plat => {
@@ -637,8 +665,21 @@
 
     async function directDownloadBlob(url) {
       if (url.startsWith('blob:') || url.startsWith('data:')) { const a = document.createElement('a'); a.href = url; a.download = "media_" + Date.now() + ".jpg"; document.body.appendChild(a); a.click(); document.body.removeChild(a); return; }
-      try { const res = await fetch(url); if(!res.ok) throw new Error(); const blob = await res.blob(); const bUrl = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = bUrl; a.download = "media_" + Date.now() + (blob.type.includes('video') ? '.mp4' : '.jpg'); document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(bUrl); } catch(err) { window.open(url, '_blank'); }
+      let bUrl = null;
+      try { 
+        const res = await fetch(url); if(!res.ok) throw new Error(); 
+        const blob = await res.blob(); 
+        bUrl = URL.createObjectURL(blob); 
+        const a = document.createElement('a'); a.href = bUrl; 
+        a.download = "media_" + Date.now() + (blob.type.includes('video') ? '.mp4' : '.jpg'); 
+        document.body.appendChild(a); a.click(); document.body.removeChild(a); 
+      } catch(err) { 
+        window.open(url, '_blank'); 
+      } finally {
+        if (bUrl) URL.revokeObjectURL(bUrl);
+      }
     }
+    
     function openLightbox(url, titleEncoded) {
       const wrapper = document.getElementById("lightboxMediaWrapper"); const btn = document.getElementById("lightboxDownloadBtn"); const info = getSmartThumbnail(url);
       if (info.type === 'youtube') { wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${info.videoId}?autoplay=1&rel=0" frameborder="0" allowfullscreen style="width:100%; height:320px; border-radius:8px;"></iframe>`; btn.onclick = () => window.open(info.url, '_blank'); }
@@ -650,11 +691,12 @@
     function closeLightbox(e) { if(e.target.id === 'lightboxModal') closeLightboxDirect(); }
     function closeLightboxDirect() { document.getElementById("lightboxMediaWrapper").innerHTML = ""; document.getElementById("lightboxModal").style.display = "none"; }
 
-    // Supabase Realtime Sync
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    let syncTimer = null;
     supabaseClient.channel('public:db_changes')
       .on('postgres_changes', { event: '*', schema: 'public' }, () => {
-        syncDataFromServer();
+        clearTimeout(syncTimer);
+        syncTimer = setTimeout(() => syncDataFromServer(), 1000);
       })
       .subscribe();
 
