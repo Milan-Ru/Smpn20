@@ -6,13 +6,29 @@
   <title>SMPN 20 BOGOR</title>
   <meta name="google-site-verification" content="RxkYC2MuktQL3sqM7dbILhSYYwpJdOCqtP_rjW66AZc" />
   
-  <!-- SEO & Meta Description (Opsi 2) -->
   <meta name="description" content="Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor. Dapatkan info terbaru seputar kegiatan sekolah, pengumuman, dan arsip digital kami.">
   <meta property="og:site_name" content="SMPN 20 BOGOR">
   <meta property="og:title" content="SMPN 20 BOGOR">
   <meta property="og:description" content="Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor. Dapatkan info terbaru seputar kegiatan sekolah, pengumuman, dan arsip digital kami.">
   <meta property="og:image" content="https://i.ibb.co.com/jPbn9s6x/13694.jpg">
   <link rel="icon" type="image/jpeg" href="https://i.ibb.co.com/jPbn9s6x/13694.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MiddleSchool",
+    "name": "SMPN 20 Bogor",
+    "alternateName": "SMP Negeri 20 Kota Bogor",
+    "url": "https://smpn20.bogor.workers.dev",
+    "logo": "https://i.ibb.co.com/jPbn9s6x/13694.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kota Bogor",
+      "addressRegion": "Jawa Barat",
+      "addressCountry": "ID"
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -234,7 +250,6 @@
 
   <header>
     <div class="container navbar">
-      <!-- Murni Navigasi Publik, Tanpa Klik 10 Kali -->
       <div class="brand-area" id="headerBrandArea" onclick="window.location.hash='#beranda'">
         <img src="https://i.ibb.co.com/jPbn9s6x/13694.jpg" alt="Logo SMPN 20 Bogor" class="brand-logo" id="targetLogo" onerror="this.src='https://via.placeholder.com/44?text=LOGO'">
         <div class="brand-text">SMPN 20<br>BOGOR</div>
@@ -272,7 +287,6 @@
     <div class="card">Memuat konten...</div>
   </main>
 
-  <!-- Downloader & Lightbox Media Publik -->
   <div id="lightboxModal" class="modal-overlay child-modal" onclick="closeLightbox(event)">
     <div style="position:relative; max-width:90%; max-height:90%; text-align:center; margin:auto;" onclick="event.stopPropagation()">
       <div id="lightboxMediaWrapper" style="margin-bottom:12px;"></div>
@@ -364,7 +378,7 @@
       let formatted = str.replace(/\*(.*?)\*/g, '<b>$1</b>').replace(/_(.*?)_/g, '<i>$1</i>').replace(/~(.*?)~/g, '<del>$1</del>');
       const temp = document.createElement('div'); temp.innerHTML = formatted; return temp.innerHTML.replace(/\n/g, '<br>');
     }
-    function sanitizeAttr(str) { return String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    function sanitizeAttr(str) { return String(str || '').replace(/&/g, '&').replace(/"/g, '"').replace(/'/g, ''').replace(/</g, '<').replace(/>/g, '>'); }
     function formatDate(dateStr) { return new Date(dateStr).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }); }
     function isVideoUrl(url) { if(!url) return false; const lower = url.toLowerCase(); return lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.mov') || lower.includes('/uploader/cdn'); }
     function getSmartThumbnail(url) {
