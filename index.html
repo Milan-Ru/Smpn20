@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title id="pageTitle">SMPN 20 BOGOR</title>
+  <!-- Dioptimalkan agar Google langsung mendeteksi nama institusi lengkap -->
+  <title id="pageTitle">SMPN 20 Kota Bogor - Website Resmi & Portal Informasi Sekolah</title>
   <meta name="google-site-verification" content="RxkYC2MuktQL3sqM7dbILhSYYwpJdOCqtP_rjW66AZc" />
   
-  <!-- SEO & Meta Description -->
-  <meta name="description" id="pageDescription" content="Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor. Dapatkan info terbaru seputar kegiatan sekolah, pengumuman, dan arsip digital kami.">
-  <meta property="og:site_name" content="SMPN 20 BOGOR">
-  <meta property="og:title" id="ogTitle" content="SMPN 20 BOGOR">
-  <meta property="og:description" id="ogDescription" content="Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor. Dapatkan info terbaru seputar kegiatan sekolah, pengumuman, dan arsip digital kami.">
+  <!-- SEO & Meta Description Diperkuat -->
+  <meta name="description" id="pageDescription" content="Situs resmi SMPN 20 Kota Bogor. Portal informasi berita terbaru, pengumuman sekolah, galeri kegiatan siswa, prestasi, dan arsip digital resmi.">
+  <meta property="og:site_name" content="SMPN 20 Kota Bogor">
+  <meta property="og:title" id="ogTitle" content="SMPN 20 Kota Bogor - Website Resmi">
+  <meta property="og:description" id="ogDescription" content="Situs resmi SMPN 20 Kota Bogor. Portal informasi berita terbaru, pengumuman sekolah, galeri kegiatan siswa, prestasi, dan arsip digital resmi.">
   <meta property="og:image" content="https://i.ibb.co.com/jPbn9s6x/13694.jpg">
   <link rel="icon" type="image/jpeg" href="https://i.ibb.co.com/jPbn9s6x/13694.jpg">
 
@@ -19,7 +20,7 @@
   {
     "@context": "https://schema.org",
     "@type": "MiddleSchool",
-    "name": "SMPN 20 Bogor",
+    "name": "SMPN 20 Kota Bogor",
     "alternateName": "SMP Negeri 20 Kota Bogor",
     "url": "https://smpn20.bogor.workers.dev",
     "logo": "https://i.ibb.co.com/jPbn9s6x/13694.jpg",
@@ -410,7 +411,6 @@
       return `<img src="${sanitizeAttr(info.thumb)}" style="${customStyle}">`;
     }
     
-    // Parser Maps Pintar (Mendukung link goo.gl tanpa kotak kuning error)
     function parseMapsUrl(rawUrl) {
       if (!rawUrl) return null; let str = rawUrl.trim();
       if (str.includes('<iframe')) { const match = str.match(/src=["']([^"']+)["']/); if (match && match[1]) return match[1]; }
@@ -500,10 +500,11 @@
     }
 
     function viewBeranda() {
-      document.title = "Beranda - SMPN 20 BOGOR";
-      document.getElementById('pageDescription').content = "Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor.";
-      document.getElementById('ogTitle').content = "Beranda - SMPN 20 BOGOR";
-      document.getElementById('ogDescription').content = "Jelajahi keseruan dan prestasi siswa-siswi SMPN 20 Bogor.";
+      // Judul diperkaya keyword SEO agar tampil profesional di Google
+      document.title = "SMPN 20 Kota Bogor - Website Resmi & Portal Informasi Sekolah";
+      document.getElementById('pageDescription').content = "Situs resmi SMPN 20 Kota Bogor. Portal informasi berita terbaru, pengumuman sekolah, galeri kegiatan siswa, dan prestasi.";
+      document.getElementById('ogTitle').content = "SMPN 20 Kota Bogor - Website Resmi";
+      document.getElementById('ogDescription').content = "Situs resmi SMPN 20 Kota Bogor. Portal informasi berita terbaru, pengumuman sekolah, galeri kegiatan siswa, dan prestasi.";
 
       if(!state.articles.length) return `<h2>Sorotan Utama</h2><div class="card"><p>Belum ada berita yang diunggah.</p></div>`;
       const headline = state.articles[0]; const recents = state.articles.slice(1, 4);
@@ -551,7 +552,7 @@
     }
 
     function viewPencarian() {
-      document.title = "Arsip - SMPN 20 BOGOR";
+      document.title = "Arsip Berita & Pengumuman - SMPN 20 Kota Bogor";
       const cats = ['Semua', 'Berita', 'Prestasi', 'Pengumuman', 'Kegiatan'];
       let dItems = cats.map(c => `<button class="category-dropdown-item ${currentCategoryFilter === c ? 'active' : ''}" onclick="setCategoryFilter('${c}')">${c}</button>`).join('');
       return `<h2>Arsip Berita</h2><div class="search-bar-box"><input type="text" id="searchInput" placeholder="Ketik kata kunci..." value="${sanitizeAttr(currentSearchKeyword)}" oninput="filterArsip(this.value)"></div>
@@ -584,7 +585,7 @@
       document.body.classList.add("no-scroll");
       const art = state.articles.find(a => String(a.id) === String(id)); if(!art) return `<h2 style="text-align:center;">Berita tidak ditemukan</h2>`;
       
-      document.title = `${art.judul} - SMPN 20 BOGOR`;
+      document.title = `${art.judul} - SMPN 20 Kota Bogor`;
       const shortDesc = (art.isi || '').substring(0, 120) + '...';
       const descEl = document.getElementById('pageDescription'); if(descEl) descEl.content = shortDesc;
       const ogTitleEl = document.getElementById('ogTitle'); if(ogTitleEl) ogTitleEl.content = art.judul;
@@ -635,7 +636,7 @@
     }
 
     function viewGaleri() {
-      document.title = "Galeri - SMPN 20 BOGOR";
+      document.title = "Galeri Foto & Dokumentasi - SMPN 20 Kota Bogor";
       let mediaList = []; state.articles.forEach(art => { if(art.foto_url) art.foto_url.split(',').forEach((u, idx) => { if(u.trim()) mediaList.push({ title: art.judul, url: u.trim() }); }); });
       state.gallery.forEach(g => { if(g.foto_url) mediaList.push({ title: g.judul, url: g.foto_url }); });
       if(!mediaList.length) return `<h2>Galeri Sekolah</h2><div class="card"><p>Belum ada media.</p></div>`;
@@ -643,7 +644,7 @@
     }
 
     function viewInformasi() {
-      document.title = "Informasi - SMPN 20 BOGOR";
+      document.title = "Informasi & Profil - SMPN 20 Kota Bogor";
       let html = `<h2>Informasi Sekolah</h2>`;
       if(state.profil) {
         let mapEmbedUrl = parseMapsUrl(state.profil.map_url);
